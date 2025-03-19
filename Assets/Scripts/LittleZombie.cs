@@ -6,7 +6,7 @@ public class LittleZombie : ZombieBase
     protected override void Start()
     {
         MaxHealth = 50;
-        moveSpeed = 1f;
+        moveSpeed = 2f;
         damage = 5;
         attackCooldown = 1.0f;
         base.Start();
