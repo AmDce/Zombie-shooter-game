@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
-    public static GameUIManager Instance;
-
     [Header("UI Elements")]
     [SerializeField] TextMeshProUGUI ammoText;
     [SerializeField] TextMeshProUGUI reloadText;
@@ -19,19 +17,6 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField]
     Button _exitBtn;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Start()
     {

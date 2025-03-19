@@ -10,11 +10,13 @@ namespace ZombieShooter.ShopView
     {
         [SerializeField] TextMeshProUGUI _name;
 
+        [SerializeField] Image _logo;
+
         [SerializeField] Button _applyBtn;
 
-        [SerializeField] TextMeshProUGUI _statsText;
-
         private string _gunName;
+
+        private GunData _gunData;
 
         private void Start()
         {
@@ -23,17 +25,15 @@ namespace ZombieShooter.ShopView
 
         public void OnSetGunData(GunData gunData)
         {
+            _gunData = gunData;
             _gunName = gunData.GunName;
             _name.text = gunData.GunName;
-            _statsText.text = $"Damage: {gunData.Damage}\nFire Rate: {gunData.FireRate}\nReload: {gunData.ReloadTime}\nAmmo: {gunData.AmmoCapacity}";
-
+            _logo.sprite = gunData.GunSprite;
         }
 
         private void OnClickPurchase()
         {
-            Debug.Log($"Purchase Completed");
-            PlayerModular.Instance.UpdateCurrentGun(_gunName);
-            MenuEventController.RaisePurchasePanel(false);
+            ShopUIManager.ShopUIManager.OnEnableStats(true, _gunData);
         }
     }
 }

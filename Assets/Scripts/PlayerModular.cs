@@ -42,6 +42,7 @@ namespace ZombieShooter.Player
 
         private void LevelComplete()
         {
+            _killCount = 0;
             GameEvents.TriggerGameOver(true, "Level Completed ...");
         }
     }
